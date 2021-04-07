@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 23:53:59 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 07:56:01 by junhpark         ###   ########.fr       */
+/*   Created: 2021/04/06 23:53:51 by junhpark          #+#    #+#             */
+/*   Updated: 2021/04/06 23:56:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				quicksort(int arr[], int start, int end)
+void				swap_arr(int arr[], int a_idx, int b_idx)
 {
-	int				pivot;
-	int				idx;
+	int				temp;
 
-	pivot = arr[(start + end) / 2];
-	idx = start;
-	while (end > start && idx <= end)
-	{
-		if (arr[idx] < pivot)
-		{
-			swap_arr(arr, idx, start);
-			idx++;
-		}
-		else
-		{
-			swap_arr(arr, idx, end);
-			end--;
-		}
-	}
-	if (end > start)
-	{
-		quicksort(arr, start, start - 1);
-		quicksort(arr, end + 1, end);
-	}
+	temp = arr[a_idx];
+	arr[a_idx] = arr[b_idx];
+	arr[b_idx] = temp;
 }

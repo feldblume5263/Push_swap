@@ -1,56 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/06 23:47:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/07 19:51:24 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "../libft/libft.h"
+#include "push_swap.h"
 
-typedef struct		s_stack
+void				get_operation(t_stack **a, t_stack **b)
 {
-	int				data;
-	struct s_stack	*next;
-}					t_stack;
+	int				flag;
+	char			*line;
 
-
-void			pop(char item, int idx, t_stack *top)
-{
-	t_stack		*temp;
-
-	if (top == NULL)
-		printf("\n\n stack is Empty!\n");
-	else
+	while (1)
 	{
-		temp = top;
-		top = top->next;
-		free(temp);
+		if ((flag = get_next_line(&line)) < 0)
+			exit_with_error(2);
+		run_operation(line, a, b);
+		free(line);
+		line = NULL;
 	}
 }
 
-void			push(char item, t_stack *top)
+void				get_num(int max, char **num, t_stack **a)
 {
-	t_stack		*temp;
-
-	if (!(temp = (t_stack *)malloc(sizeof(t_stack))))
-		return ;
-	temp->data = item;
-	temp->next = top;
-	top = temp;
-}
-
-int					main(int argc, char *argv[])
-{
-	t_stack			a;
-	t_stack			b;
 	int				idx;
 
-	idx = 0;
+	idx = 1;
+	while (idx <= max)
+	{
+		if (!(is_string_digit(num[idx])))
+			exit_with_error(1);
+		push(a, ft_atoi(num[idx]));
+		idx++;
+	}
+}
+
+// 정수형 범위 초과, 중복 검사 해야함.
+int					main(int argc, char *argv[])
+{
+	t_stack			*a;
+	t_stack			*b;
+
+	get_num(argc - 1, argv, &a);
+	reverse_rotate(&a);
+	printf("??\n");
+	// get_operation(&a, &b);
 }

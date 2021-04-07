@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 23:53:59 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 07:56:01 by junhpark         ###   ########.fr       */
+/*   Created: 2021/04/07 19:48:39 by junhpark          #+#    #+#             */
+/*   Updated: 2021/04/07 19:51:20 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				quicksort(int arr[], int start, int end)
+void				exit_with_error(int errno)
 {
-	int				pivot;
+	if (errno == 1)
+	{
+		write(1, "ERROR\n", 6);
+		exit(1);
+	}
+	else if (errno == 2)
+	{
+		write(1, "MEM_ERROR\n", 10);
+		exit(2);
+	}
+}
+
+int					is_string_digit(char *str)
+{
 	int				idx;
 
-	pivot = arr[(start + end) / 2];
-	idx = start;
-	while (end > start && idx <= end)
+	idx = 0;
+	while (str[idx])
 	{
-		if (arr[idx] < pivot)
-		{
-			swap_arr(arr, idx, start);
-			idx++;
-		}
-		else
-		{
-			swap_arr(arr, idx, end);
-			end--;
-		}
+		if (!(str[idx] >= '0' && str[idx] <= '9'))
+			return (0);
+		idx++;
 	}
-	if (end > start)
-	{
-		quicksort(arr, start, start - 1);
-		quicksort(arr, end + 1, end);
-	}
+	return (1);
 }
