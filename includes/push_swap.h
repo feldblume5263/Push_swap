@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 20:06:01 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:50:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,15 @@ typedef struct		s_input
 **	checker.c
 */
 
+void				get_operation(t_stack **a, t_stack **b);
+void				get_num(int max, char **num, t_stack **a);
+void				print_stack(t_stack *a, t_stack *b);
+
 /*
 **	operation.c
 */
 
-void				run_operation(char *opt, t_stack **a, t_stack **b);
+int					run_operation(char *opt, t_stack **a, t_stack **b);
 void				ft_swap(t_stack **a, t_stack **b, int tag);
 void				ft_push(t_stack **a, t_stack **b, int tag);
 void				ft_rotate(t_stack **a, t_stack **b, int tag);
