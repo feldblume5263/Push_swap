@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/26 20:23:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:38:50 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,36 @@ int					check_order(t_stack *stack)
 	return (1);
 }
 
-void				print_stack(t_stack *a, t_stack *b)
-{
-	t_stack			*new;
 
-	new = a;
-	printf("A | ");
-	while (new)
-	{
-		printf("%d ", new->content);
-		new = new->next;
-	}
-	printf("\n");
-	new = b;
-	printf("B | ");
-	while (new)
-	{
-		printf("%d ", new->content);
-		new = new->next;
-	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
+int					run_operation(char *opt, t_stack **a, t_stack **b)
+{
+	if (ft_strlen(opt) == 2 && ft_strncmp(opt, "sa", 2) == 0)
+		ft_swap(a, b, TAG_A);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "sb", 2) == 0)
+		ft_swap(a, b, TAG_B);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ss", 2) == 0)
+		ft_swap(a, b, TAG_ALL);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "pa", 2) == 0)
+		ft_push(a, b, TAG_A);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "pb", 2) == 0)
+		ft_push(a, b, TAG_B);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ra", 2) == 0)
+		ft_rotate(a, b, TAG_A);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rb", 2) == 0)
+		ft_rotate(a, b, TAG_B);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rr", 2) == 0)
+		ft_rotate(a, b, TAG_ALL);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rra", 3) == 0)
+		ft_rev_rotate(a, b, TAG_A);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrb", 3) == 0)
+		ft_rev_rotate(a, b, TAG_B);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrr", 3) == 0)
+		ft_rev_rotate(a, b, TAG_ALL);
+	else if (*opt == '\0')
+		return (0);
+	else
+		exit_with_error(1);
+	return (1);
 }
 
 void				get_operation(t_stack **a, t_stack **b)
