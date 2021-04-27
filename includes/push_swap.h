@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:39:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:55:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ typedef struct		s_input
 */
 int					main(int argc, char *argv[]);
 void				get_operation(t_stack **a, t_stack **b);
-void				get_num(int max, char **num, t_stack **a);
 int					run_operation(char *opt, t_stack **a, t_stack **b);
 int					check_order(t_stack *stack);
+
+/*
+**	push_swap.c
+*/
+
+int					main(int argc, char *argv[]);
+
 
 /*
 **	operation.c
@@ -92,6 +98,7 @@ void				quicksort(int arr[], int start, int end);
 */
 int					get_next_line(char **line);
 char				*gnl_join(char *line, char buff);
+void				set_num(int max, char **num, t_stack **stack);
 
 /*
 **	print_stack.c

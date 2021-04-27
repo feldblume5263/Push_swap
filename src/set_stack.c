@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   set_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:04:11 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 17:10:24 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:57:35 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void				set_num(int max, char **num, t_stack **stack)
+{
+	int				idx;
+
+	idx = 1;
+	while (idx <= max)
+	{
+		if (!(is_string_digit(num[idx])))
+			exit_with_error(1);
+		stack_add_back(stack, stack_init(ft_atoi(num[idx])));
+		idx++;
+	}
+}
 
 char				*gnl_join(char *line, char buff)
 {

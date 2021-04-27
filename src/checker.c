@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:38:50 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:55:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,26 +81,12 @@ void				get_operation(t_stack **a, t_stack **b)
 		write(1, "KO\n", 3);
 }
 
-void				get_num(int max, char **num, t_stack **a)
-{
-	int				idx;
-
-	idx = 1;
-	while (idx <= max)
-	{
-		if (!(is_string_digit(num[idx])))
-			exit_with_error(1);
-		stack_add_back(a, stack_init(ft_atoi(num[idx])));
-		idx++;
-	}
-}
-
 // 정수형 범위 초과, 중복 검사 해야함.
 int					main(int argc, char *argv[])
 {
 	t_stack			*a;
 	t_stack			*b;
 
-	get_num(argc - 1, argv, &a);
+	set_num(argc - 1, argv, &a);
 	get_operation(&a, &b);
 }
