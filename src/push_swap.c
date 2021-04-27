@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 19:48:39 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 22:07:06 by junhpark         ###   ########.fr       */
+/*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
+/*   Updated: 2021/04/27 22:12:50 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				exit_with_error(int errno)
+void				set_index(t_stack *stack)
 {
-	if (errno == 1)
+	t_stack			*temp;
+	t_stack			*start;
+	int				count;
+
+	start = stack;
+	while (stack)
 	{
-		write(1, "ERROR\n", 6);
-		exit(1);
-	}
-	else if (errno == 2)
-	{
-		write(1, "MEM_ERROR\n", 10);
-		exit(2);
+		temp = start;
+		count = 0;
+		while (temp)
+		{
+			if (temp->content < stack->content)
+				count++;
+			temp = temp->next;
+		}
+		stack->index = count;
+		stack = stack->next;
 	}
 }
 
-int					is_string_digit(char *str)
+int					main(int argc, char *argv[])
 {
-	int				idx;
-	int				count;
+	t_stack			*a;
+	t_stack			*b;
 
-	idx = 0;
-	count = 0;
-	while (str[idx])
-	{
-		if (!(str[idx] >= '0' && str[idx] <= '9'))
-			count++;
-		idx++;
-	}
-	return (count);
+	if (argc < 2)
+		return (0);
+	set_num(argc - 1, argv, &a);
+	set_index(a);
+
 }

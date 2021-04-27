@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:55:26 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 21:54:23 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ int					check_order(t_stack *stack);
 
 int					main(int argc, char *argv[]);
 
+/*
+**	set_stack.c
+*/
+int					get_next_line(char **line);
+char				*gnl_join(char *line, char buff);
+void				set_num(int max, char **num, t_stack **stack);
+void				set_index(t_stack *stack);
 
 /*
 **	operation.c
@@ -62,10 +69,10 @@ void				ft_rev_rotate(t_stack **a, t_stack **b, int tag);
 /*
 **	stack.c
 */
-void				push(t_stack **stack, int content);
+void				push(t_stack **stack, t_stack *new);
 void				rotate(t_stack **stack);
 void				reverse_rotate(t_stack **stack);
-int					pop(t_stack **stack);
+t_stack				*pop(t_stack **stack);
 
 /*
 **	stack_utils.c
@@ -92,13 +99,6 @@ void				swap_arr(int arr[], int a_idx, int b_idx);
 **	quick_sort.c
 */
 void				quicksort(int arr[], int start, int end);
-
-/*
-**	get_next_line.c
-*/
-int					get_next_line(char **line);
-char				*gnl_join(char *line, char buff);
-void				set_num(int max, char **num, t_stack **stack);
 
 /*
 **	print_stack.c

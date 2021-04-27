@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:33:44 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 16:25:26 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 21:15:30 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ t_stack				*stack_init(int content)
 		return (0);
 	n_stack->content = content;
 	n_stack->next = 0;
+	n_stack->index = -1;
+	n_stack->is_a = -1;
 	return (n_stack);
 }

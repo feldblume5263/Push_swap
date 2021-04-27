@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:59:03 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/07 19:44:04 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 21:19:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 **	구조체를 반환해서 비어있다는 인자를 포함시킬 수 있다.
 */
 
-int					pop(t_stack **stack)
+t_stack				*pop(t_stack **stack)
 {
 	t_stack			*temp;
-	int				ret;
+	t_stack			*ret;
 
 	if (*stack == NULL)
-		return ((int)NULL);
-	ret = (*stack)->content;
+		return (NULL);
+	ret = stack_init((*stack)->content);
+	ret->index = (*stack)->index;
+	ret->is_a = (*stack)->is_a;
 	temp = (*stack)->next;
 	free (*stack);
 	*stack = temp;
@@ -33,7 +35,7 @@ int					pop(t_stack **stack)
 
 void				rotate(t_stack **stack)
 {
-	stack_add_back(stack, stack_init(pop(stack)));
+	stack_add_back(stack, pop(stack));
 }
 
 // 이 부분을 좀 더 깔끔히?
@@ -51,7 +53,7 @@ void				reverse_rotate(t_stack **stack)
 	}
 }
 
-void				push(t_stack **stack, int content)
+void				push(t_stack **stack, t_stack *new)
 {
-	stack_add_front(stack, stack_init(content));
+	stack_add_front(stack, new);
 }

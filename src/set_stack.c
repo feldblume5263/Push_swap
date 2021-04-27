@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:04:11 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:57:35 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 22:09:42 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 void				set_num(int max, char **num, t_stack **stack)
 {
 	int				idx;
+	int				count;
 
 	idx = 1;
 	while (idx <= max)
 	{
-		if (!(is_string_digit(num[idx])))
-			exit_with_error(1);
+		if ((count = is_string_digit(num[idx])) > 0)
+		{
+			if (!((num[idx][0] == '+' || num[idx][0] == '-') && count == 1))
+				exit_with_error(1);
+		}
 		stack_add_back(stack, stack_init(ft_atoi(num[idx])));
 		idx++;
 	}

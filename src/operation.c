@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 19:50:33 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:36:57 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 20:59:17 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ void				ft_push(t_stack **a, t_stack **b, int tag)
 
 void				ft_swap(t_stack **a, t_stack **b, int tag)
 {
-	t_stack			*temp;
-	int				up;
-	int				down;
+	t_stack			*up;
+	t_stack			*down;
 
 	if (tag == TAG_A || tag == TAG_ALL)
 	{

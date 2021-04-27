@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 16:55:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/27 22:12:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int					main(int argc, char *argv[])
 	t_stack			*a;
 	t_stack			*b;
 
+	if (argc < 2)
+		return (0);
 	set_num(argc - 1, argv, &a);
 	get_operation(&a, &b);
 }
