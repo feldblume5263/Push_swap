@@ -6,28 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 22:12:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:54:40 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int					check_order(t_stack *stack)
-{
-	t_stack			*new;
-	int				temp;
-
-	new = stack;
-	temp = new->content;
-	while (new)
-	{
-		if (temp > new->content)
-			return (0);
-		new = new->next;
-	}
-	return (1);
-}
-
 
 int					run_operation(char *opt, t_stack **a, t_stack **b)
 {
@@ -75,7 +58,7 @@ void				get_operation(t_stack **a, t_stack **b)
 		free(line);
 		line = NULL;
 	}
-	if (check_order(*a) == 1)
+	if (check_order(*a) == 1 && stack_size(*b) == 0)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

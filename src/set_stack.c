@@ -6,11 +6,33 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:04:11 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 22:09:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:19:38 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void				set_index(t_stack *stack)
+{
+	t_stack			*temp;
+	t_stack			*start;
+	int				count;
+
+	start = stack;
+	while (stack)
+	{
+		temp = start;
+		count = 0;
+		while (temp)
+		{
+			if (temp->content < stack->content)
+				count++;
+			temp = temp->next;
+		}
+		stack->index = count;
+		stack = stack->next;
+	}
+}
 
 void				set_num(int max, char **num, t_stack **stack)
 {

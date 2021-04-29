@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 19:50:33 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 20:59:17 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:53:20 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,18 @@ void				ft_swap(t_stack **a, t_stack **b, int tag)
 	}
 }
 
+int					check_order(t_stack *stack)
+{
+	t_stack			*new;
+	int				temp;
 
+	new = stack;
+	temp = new->content;
+	while (new)
+	{
+		if (temp > new->content)
+			return (0);
+		new = new->next;
+	}
+	return (1);
+}

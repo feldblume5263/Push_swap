@@ -1,63 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   markup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/27 16:38:23 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/29 17:48:52 by junhpark         ###   ########.fr       */
+/*   Created: 2021/04/29 15:51:38 by junhpark          #+#    #+#             */
+/*   Updated: 2021/04/29 17:19:34 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				print_stack_with_opt(t_stack *a, t_stack *b)
+int					count_markup(t_stack *stack)
 {
 	t_stack			*new;
+	int				count;
 
-	new = a;
-	printf("A | ");
+	new = stack;
+	count = 0;
 	while (new)
 	{
-		printf("%d", new->content);
-		printf("(%d, %d) ", new->index, new->is_a);
+		if (new->is_a == 1)
+			count++;
 		new = new->next;
 	}
-	printf("\n");
-	new = b;
-	printf("B | ");
-	while (new)
-	{
-		printf("%d ", new->content);
-		printf("(%d, %d) ", new->index, new->is_a);
-		new = new->next;
-	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
+	return (count);
 }
 
-void				print_stack(t_stack *a, t_stack *b)
+void				set_tag(t_stack *new, int *tag)
+{
+	if (new->index == (*tag) + 1)
+	{
+		new->is_a = 1;
+		(*tag) = (*tag) + 1;
+	}
+	else
+		new->is_a = 0;
+}
+
+void				set_markup(t_stack *stack)
 {
 	t_stack			*new;
+	int				tag;
 
-	new = a;
-	printf("A | ");
+	new = stack;
+	tag = -1;
 	while (new)
 	{
-		printf("%d ", new->content);
+		if (tag >= 0)
+			set_tag(new, &tag);
+		if (new->index == 0)
+		{
+			new->is_a = 1;
+			tag = 0;
+		}
 		new = new->next;
 	}
-	printf("\n");
-	new = b;
-	printf("B | ");
+	new = stack;
 	while (new)
 	{
-		printf("%d ", new->content);
+		if (new->index == 0)
+			break ;
+		set_tag(new, &tag);
 		new = new->next;
 	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
 }

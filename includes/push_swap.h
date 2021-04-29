@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/27 21:54:23 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/29 17:40:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
+# include <stdio.h> // 삭제 필수...!
 # include <fcntl.h>
 
 # define TAG_A		1
 # define TAG_B		2
 # define TAG_ALL	3
+# define TRUE		1
+# define FALSE		0
 
 typedef struct		s_stack
 {
@@ -42,7 +44,6 @@ typedef struct		s_input
 int					main(int argc, char *argv[]);
 void				get_operation(t_stack **a, t_stack **b);
 int					run_operation(char *opt, t_stack **a, t_stack **b);
-int					check_order(t_stack *stack);
 
 /*
 **	push_swap.c
@@ -59,8 +60,17 @@ void				set_num(int max, char **num, t_stack **stack);
 void				set_index(t_stack *stack);
 
 /*
+**	markup.c
+*/
+void				set_markup(t_stack *stack);
+void				set_tag(t_stack *new, int *tag);
+int					count_markup(t_stack *stack);
+
+
+/*
 **	operation.c
 */
+int					check_order(t_stack *stack);
 void				ft_swap(t_stack **a, t_stack **b, int tag);
 void				ft_push(t_stack **a, t_stack **b, int tag);
 void				ft_rotate(t_stack **a, t_stack **b, int tag);
@@ -104,5 +114,6 @@ void				quicksort(int arr[], int start, int end);
 **	print_stack.c
 */
 void				print_stack(t_stack *a, t_stack *b);
+void				print_stack_with_opt(t_stack *a, t_stack *b);
 
 #endif
