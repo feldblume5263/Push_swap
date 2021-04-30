@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 16:53:41 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:50:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,14 @@ int					main(int argc, char *argv[]);
 
 
 /*
+**	sort_by_index.c
+*/
+void				sorting_index(t_stack **a, t_stack **b, t_res **res);
+void				a_to_b(t_stack **a, t_stack **b, t_res **res);
+int					check_swap_effect(t_stack **a, t_stack **b, int mark);
+void				move_smallest_to_first(t_stack **stack, t_res **res);
+
+/*
 **	sorting_utils.c
 */
 int					get_largest(t_stack *stack);
@@ -82,8 +90,9 @@ int					get_index_order(t_stack *new, int index);
 */
 void				add_operation(t_res **stack, int operation);
 t_res				*init_operation(int operation);
-void				print_operation(t_res *stack);
 t_res				*operation_last(t_res *stack);
+void				refactoring_res(t_res *res)
+
 /*
 **	set_stack.c
 */
@@ -148,5 +157,7 @@ void				quicksort(int arr[], int start, int end);
 */
 void				print_stack(t_stack *a, t_stack *b);
 void				print_stack_with_opt(t_stack *a, t_stack *b);
+void				print_operation(t_res *stack);
+void				print_by_num(t_res *new);
 
 #endif
