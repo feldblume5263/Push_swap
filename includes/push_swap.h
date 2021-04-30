@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 14:54:04 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 16:53:41 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,21 @@
 # define TRUE		1
 # define FALSE		0
 
+# define SA			0
+# define RA			1
+# define RRA		2
+# define SB			3
+# define RB			4
+# define RRB		5
+# define PA			6
+# define PB			7
+# define SS			8
+# define RR			9
+# define RRR		10
+
 typedef struct		s_res
 {
-	char			*op;
+	int				op;
 	struct s_res	*next;
 }					t_res;
 
@@ -65,6 +77,13 @@ int					get_largest(t_stack *stack);
 int					get_smallest(t_stack *stack);
 int					get_index_order(t_stack *new, int index);
 
+/*
+**	result.c
+*/
+void				add_operation(t_res **stack, int operation);
+t_res				*init_operation(int operation);
+void				print_operation(t_res *stack);
+t_res				*operation_last(t_res *stack);
 /*
 **	set_stack.c
 */

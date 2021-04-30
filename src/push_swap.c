@@ -6,13 +6,13 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 14:52:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:05:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				move_largest_to_first(t_stack **stack)
+void				move_largest_to_first(t_stack **stack, t_res **res)
 {
 	t_stack			*new;
 	int				count;
@@ -23,21 +23,21 @@ void				move_largest_to_first(t_stack **stack)
 	largest = get_largest(*stack);
 	count = get_index_order(new, largest);
 	idx = -1;
-	if (count < (stack_size(*stack) / 2))
-		while (++idx < count - 1)
-		{
-			write(1, "rb\n", 3);
-			ft_rotate(NULL, stack, TAG_B);
-		}
-	else
+	if (count > (stack_size(*stack) / 2))
 		while (++idx < stack_size(*stack) - count + 1)
 		{
-			write(1, "rrb\n", 4);
+			add_operation(res, RRB);
 			ft_rev_rotate(NULL, stack, TAG_B);
+		}
+	else
+		while (++idx < count - 1)
+		{
+			add_operation(res, RB);
+			ft_rotate(NULL, stack, TAG_B);
 		}
 }
 
-void				move_smallest_to_first(t_stack **stack)
+void				move_smallest_to_first(t_stack **stack, t_res **res)
 {
 	t_stack			*new;
 	int				count;
@@ -48,17 +48,17 @@ void				move_smallest_to_first(t_stack **stack)
 	smallest = get_smallest(*stack);
 	count = get_index_order(new, smallest);
 	idx = -1;
-	if (count <= (stack_size(*stack) / 2))
-		while (++idx < count - 1)
-		{
-			write(1, "ra\n", 3);
-			ft_rotate(NULL, stack, TAG_B);
-		}
-	else
+	if (count > (stack_size(*stack) / 2))
 		while (++idx < stack_size(*stack) - count + 1)
 		{
-			write(1, "rra\n", 4);
+			add_operation(res, RRA);
 			ft_rev_rotate(NULL, stack, TAG_B);
+		}
+	else
+		while (++idx < count - 1)
+		{
+			add_operation(res, RA);
+			ft_rotate(NULL, stack, TAG_B);
 		}
 }
 
@@ -76,45 +76,82 @@ int					check_swap_effect(t_stack **a, t_stack **b, int mark)
 		return (TRUE);
 }
 
-void				a_to_b(t_stack **a, t_stack **b)
+void				a_to_b(t_stack **a, t_stack **b, t_res **res)
 {
 	int				mark;
 
 	while ((mark = count_markup(*a)) != stack_size(*a))
 	{
 		if (check_swap_effect(a, b, mark) == 1)
-			write(1, "sa\n", 3);
+			add_operation(res, SA);
 		else if ((*a)->is_a == 0)
 		{
 			ft_push(a, b, TAG_B);
-			write(1, "pb\n", 3);
+			add_operation(res, PB);
 		}
 		else
 		{
 			ft_rotate(a, b, TAG_A);
-			write(1, "ra\n", 3);
+			add_operation(res, RA);
 		}
 	}
 }
 
-void				sorting_index(t_stack **a, t_stack **b, t_stack *ret)
+void				sorting_index(t_stack **a, t_stack **b, t_res **res)
 {
-	a_to_b(a, b);
-	move_smallest_to_first(a);
+	a_to_b(a, b, res);
+	move_smallest_to_first(a, res);
 	while (!(stack_size(*b) == 0))
 	{
-		move_largest_to_first(b);
+		move_largest_to_first(b, res);
 		ft_push(a, b, TAG_A);
-		write(1, "pa\n", 3);
+		add_operation(res, PA);
 	}
-	move_smallest_to_first(a);
+	move_smallest_to_first(a, res);
 }
 
-int					sorting(t_stack **a, t_stack **b)
+void				refactoring_res(t_res *res)
 {
-	t_stack			*ret_index;
+	t_res			*new;
+	t_res			*cmp;
 
-	sorting_index(a, b, ret_index);
+	new = res;
+	while (new)
+	{
+		if (new->op >= 0 && new->op <= 2)
+		{
+			cmp = new->next;
+			while (cmp && !(cmp->op >= 3 && cmp->op <= 10))
+				cmp = cmp->next;
+			if (cmp && cmp->op == new->op + 3)
+			{
+				new->op += 8;
+				cmp->op = -1;
+			}
+		}
+		if (new->op >= 3 && new->op <= 5)
+		{
+			cmp = new->next;
+			while (cmp && !((cmp->op >= 6 && cmp->op <= 10) || (cmp->op >= 0 && cmp->op <= 2)))
+				cmp = cmp->next;
+			if (cmp && cmp->op == new->op - 3)
+			{
+				new->op += 5;
+				cmp->op = -1;
+			}
+		}
+		new = new->next;
+	}
+}
+
+void				sorting(t_stack **a, t_stack **b)
+{
+	t_res			*res_one;
+
+	res_one = init_operation(-1);
+	sorting_index(a, b, &res_one);
+	refactoring_res(res_one);
+	print_operation(res_one);
 }
 
 int					main(int argc, char *argv[])
@@ -127,5 +164,5 @@ int					main(int argc, char *argv[])
 	set_num(argc - 1, argv, &a);
 	set_index(a);
 	set_markup(a);
-	sorting_index(&a, &b);
+	sorting(&a, &b);
 }
