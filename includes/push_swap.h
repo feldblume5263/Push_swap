@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/29 17:40:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:54:04 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define TAG_ALL	3
 # define TRUE		1
 # define FALSE		0
+
+typedef struct		s_res
+{
+	char			*op;
+	struct s_res	*next;
+}					t_res;
 
 typedef struct		s_stack
 {
@@ -50,6 +56,14 @@ int					run_operation(char *opt, t_stack **a, t_stack **b);
 */
 
 int					main(int argc, char *argv[]);
+
+
+/*
+**	sorting_utils.c
+*/
+int					get_largest(t_stack *stack);
+int					get_smallest(t_stack *stack);
+int					get_index_order(t_stack *new, int index);
 
 /*
 **	set_stack.c

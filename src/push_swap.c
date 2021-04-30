@@ -6,26 +6,35 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/29 21:49:09 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:52:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int					get_smallest(t_stack *stack)
+void				move_largest_to_first(t_stack **stack)
 {
 	t_stack			*new;
-	int				smallest;
+	int				count;
+	int				largest;
+	int				idx;
 
-	smallest = stack->index;
-	new = stack;
-	while (new)
-	{
-		if (new->index < smallest)
-			smallest = new->index;
-		new = new->next;
-	}
-	return (smallest);
+	new = *stack;
+	largest = get_largest(*stack);
+	count = get_index_order(new, largest);
+	idx = -1;
+	if (count < (stack_size(*stack) / 2))
+		while (++idx < count - 1)
+		{
+			write(1, "rb\n", 3);
+			ft_rotate(NULL, stack, TAG_B);
+		}
+	else
+		while (++idx < stack_size(*stack) - count + 1)
+		{
+			write(1, "rrb\n", 4);
+			ft_rev_rotate(NULL, stack, TAG_B);
+		}
 }
 
 void				move_smallest_to_first(t_stack **stack)
@@ -36,21 +45,21 @@ void				move_smallest_to_first(t_stack **stack)
 	int				idx;
 
 	new = *stack;
-	count = 0;
 	smallest = get_smallest(*stack);
-	while (new && new->index != smallest)
-	{
-		new = new->next;
-		count++;
-	}
-	count++;
+	count = get_index_order(new, smallest);
 	idx = -1;
-	if (count < (stack_size(*stack) / 2))
-		while (++idx < count)
+	if (count <= (stack_size(*stack) / 2))
+		while (++idx < count - 1)
+		{
+			write(1, "ra\n", 3);
 			ft_rotate(NULL, stack, TAG_B);
+		}
 	else
 		while (++idx < stack_size(*stack) - count + 1)
+		{
+			write(1, "rra\n", 4);
 			ft_rev_rotate(NULL, stack, TAG_B);
+		}
 }
 
 int					check_swap_effect(t_stack **a, t_stack **b, int mark)
@@ -85,22 +94,27 @@ void				a_to_b(t_stack **a, t_stack **b)
 			ft_rotate(a, b, TAG_A);
 			write(1, "ra\n", 3);
 		}
-		print_stack_with_opt(*a, *b);
 	}
 }
 
-void				sorting(t_stack **a, t_stack **b)
+void				sorting_index(t_stack **a, t_stack **b, t_stack *ret)
 {
-
-	while (!(check_order(*a) == 1 && stack_size(*b) == 0))
+	a_to_b(a, b);
+	move_smallest_to_first(a);
+	while (!(stack_size(*b) == 0))
 	{
-		a_to_b(a, b);
-		move_smallest_to_first(a);
-		printf(">>\n");
-		print_stack_with_opt(*a, *b);
-		break ;
-
+		move_largest_to_first(b);
+		ft_push(a, b, TAG_A);
+		write(1, "pa\n", 3);
 	}
+	move_smallest_to_first(a);
+}
+
+int					sorting(t_stack **a, t_stack **b)
+{
+	t_stack			*ret_index;
+
+	sorting_index(a, b, ret_index);
 }
 
 int					main(int argc, char *argv[])
@@ -113,5 +127,5 @@ int					main(int argc, char *argv[])
 	set_num(argc - 1, argv, &a);
 	set_index(a);
 	set_markup(a);
-	sorting(&a, &b);
+	sorting_index(&a, &b);
 }
