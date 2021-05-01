@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:59:03 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/28 12:52:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 12:56:36 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void				rotate(t_stack **stack)
 	stack_add_back(stack, pop(stack));
 }
 
-// 이 부분을 좀 더 깔끔히?
+// REVIEW 이 부분을 좀 더 깔끔히?
 void				reverse_rotate(t_stack **stack)
 {
 	int				size;

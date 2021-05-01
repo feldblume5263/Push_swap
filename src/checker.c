@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/29 16:54:40 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 12:54:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void				get_operation(t_stack **a, t_stack **b)
 		write(1, "KO\n", 3);
 }
 
-// 정수형 범위 초과, 중복 검사 해야함.
+// TODO 정수형 범위 초과, 중복 검사 해야함.
 int					main(int argc, char *argv[])
 {
 	t_stack			*a;

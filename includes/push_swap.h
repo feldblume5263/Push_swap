@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 17:50:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/04/30 21:05:40 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int					get_index_order(t_stack *new, int index);
 void				add_operation(t_res **stack, int operation);
 t_res				*init_operation(int operation);
 t_res				*operation_last(t_res *stack);
-void				refactoring_res(t_res *res)
+void				refactoring_res(t_res *res);
 
 /*
 **	set_stack.c

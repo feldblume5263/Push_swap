@@ -6,22 +6,62 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 20:02:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 12:49:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int					set_headmark(t_stack **a)
+int					set_headmark(t_stack *a)
 {
+	int				temp;
+	int				count;
+	t_stack			*new;
+	t_stack			*start;
+	int				largest;
+	int				ret_index;
 
+	new = a;
+	largest = 0;
+	while (new)
+	{
+		temp = new->index;
+		start = new->next;
+		count = 1;
+		while (start && start->index > temp)
+		{
+			count++;
+			temp = start->index;
+			start = start->next;
+		}
+		if (!start)
+		{
+			start = a;
+			while (start && start->index > temp)
+			{
+				count++;
+				temp = start->index;
+				start = start->next;
+			}
+		}
+		if (largest < count)
+		{
+			largest = count;
+			ret_index = new->index;
+		}
+		new = new->next;
+	}
+	printf("(%d)\n", largest);
+	return (ret_index);
 }
 
 void				sorting_size(t_stack **a, t_stack **b, t_res **res)
 {
 	int				mark;
 
-	mark = set_headmark(a);
+	printf("mark: 0\n");
+	mark = set_headmark(*a);
+	printf("mark: %d\n", mark);
 }
 
 void				sorting(t_stack **a, t_stack **b)
@@ -29,6 +69,7 @@ void				sorting(t_stack **a, t_stack **b)
 	t_res			*res_one;
 	t_res			*res_two;
 
+	// set_markup(a);
 	// res_one = init_operation(-1);
 	// sorting_index(a, b, &res_one);
 	// refactoring_res(res_one);
@@ -46,6 +87,5 @@ int					main(int argc, char *argv[])
 		return (0);
 	set_num(argc - 1, argv, &a);
 	set_index(a);
-	set_markup(a);
 	sorting(&a, &b);
 }
