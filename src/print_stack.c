@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:38:23 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 17:47:58 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 18:16:03 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,30 @@ void				print_by_num(t_res *new)
 		write(1, "rrb\n", 4);
 	else if (new->op == RRR)
 		write(1, "rrr\n", 5);
+}
+
+void				print_stack_index(t_stack *a, t_stack *b)
+{
+	t_stack			*new;
+
+	new = a;
+	printf("A | ");
+	while (new)
+	{
+		printf("%d ", new->index);
+		new = new->next;
+	}
+	printf("\n");
+	new = b;
+	printf("B | ");
+	while (new)
+	{
+		printf("%d ", new->index);
+		new = new->next;
+	}
+	printf("\n");
+	printf("\n");
+	printf("\n");
 }
 
 void				print_stack_with_opt(t_stack *a, t_stack *b)

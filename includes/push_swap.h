@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 21:05:40 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 20:00:31 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,18 @@ int					run_operation(char *opt, t_stack **a, t_stack **b);
 */
 
 int					main(int argc, char *argv[]);
-
+void				sorting(t_stack **a, t_stack **b);
+void				sorting_size(t_stack **a, t_stack **b, t_res **res);
+void				size_a_to_b(t_stack **a, t_stack **b, t_res **res);
+int					size_check_swap_effect(t_stack **a, t_stack **b, int mark);
+int					set_headmark(t_stack *a);
+void				set_size_mark(t_stack *a, int headmark);
+void				size_b_to_a(t_stack **a, t_stack **b, t_res **res);
+void				rotate_a_to_put(t_stack **a, t_stack **b, t_res **res);
+int					prepare_move(t_stack **a, t_stack **b);
+void				calculate_test(t_stack **a, t_stack **b, int *test, int operation);
+void				size_run_operation(t_stack **a, t_stack **b, int opt);
+int					get_gap(int a, int b);
 
 /*
 **	sort_by_index.c
@@ -157,6 +168,7 @@ void				quicksort(int arr[], int start, int end);
 */
 void				print_stack(t_stack *a, t_stack *b);
 void				print_stack_with_opt(t_stack *a, t_stack *b);
+void				print_stack_index(t_stack *a, t_stack *b);
 void				print_operation(t_res *stack);
 void				print_by_num(t_res *new);
 

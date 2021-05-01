@@ -6,11 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 17:49:30 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 17:50:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/01 20:03:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.c"
+#include "push_swap.h"
 
 void				move_largest_to_first(t_stack **stack, t_res **res)
 {
