@@ -6,23 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 08:33:44 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 17:58:05 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 18:53:44 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void				stack_delete(t_stack **stack)
-{
-	t_stack			*temp;
-
-	temp = stack_last(*stack);
-	if (temp)
-	{
-		free(temp);
-		temp = NULL;
-	}
-}
 
 void				stack_add_back(t_stack **stack, t_stack *new)
 {

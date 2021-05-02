@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 20:18:45 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 12:54:55 by junhpark         ###   ########.fr       */
+/*   Created: 2021/05/02 20:12:08 by junhpark          #+#    #+#             */
+/*   Updated: 2021/05/02 20:12:12 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ int					main(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	set_num(argc - 1, argv, &a);
-	get_operation(&a, &b);
 }

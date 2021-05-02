@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 17:04:11 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/29 17:19:38 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 18:40:21 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int					get_next_line(char **line)
 	while ((flag = read(0, buff, 1)) > 0)
 	{
 		if (buff[0] == '\n')
-			break;
+			break ;
 		*line = gnl_join(*line, buff[0]);
 	}
 	free(buff);

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:59:03 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 12:56:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 18:41:21 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack				*pop(t_stack **stack)
 	ret->index = (*stack)->index;
 	ret->is_a = (*stack)->is_a;
 	temp = (*stack)->next;
-	free (*stack);
+	free(*stack);
 	*stack = temp;
 	return (ret);
 }
@@ -33,7 +33,6 @@ void				rotate(t_stack **stack)
 	stack_add_back(stack, pop(stack));
 }
 
-// REVIEW 이 부분을 좀 더 깔끔히?
 void				reverse_rotate(t_stack **stack)
 {
 	int				size;

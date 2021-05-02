@@ -6,44 +6,24 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 15:06:54 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 17:47:54 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 19:21:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void				refactoring_res(t_res *res)
+int					count_operation_final(t_res *operation)
 {
-	t_res			*new;
-	t_res			*cmp;
+	int				count;
 
-	new = res;
-	while (new)
+	count = 0;
+	while (operation)
 	{
-		if (new->op >= 0 && new->op <= 2)
-		{
-			cmp = new->next;
-			while (cmp && !(cmp->op >= 3 && cmp->op <= 10))
-				cmp = cmp->next;
-			if (cmp && cmp->op == new->op + 3)
-			{
-				new->op += 8;
-				cmp->op = -1;
-			}
-		}
-		if (new->op >= 3 && new->op <= 5)
-		{
-			cmp = new->next;
-			while (cmp && !((cmp->op >= 6 && cmp->op <= 10) || (cmp->op >= 0 && cmp->op <= 2)))
-				cmp = cmp->next;
-			if (cmp && cmp->op == new->op - 3)
-			{
-				new->op += 5;
-				cmp->op = -1;
-			}
-		}
-		new = new->next;
+		if (operation->op > -1)
+			count++;
+		operation = operation->next;
 	}
+	return (count);
 }
 
 t_res				*operation_last(t_res *stack)
@@ -58,9 +38,7 @@ t_res				*operation_last(t_res *stack)
 	return (new);
 }
 
-
-
-t_res				*init_operation(int	operation)
+t_res				*init_operation(int operation)
 {
 	t_res			*n_stack;
 
@@ -70,7 +48,6 @@ t_res				*init_operation(int	operation)
 	n_stack->next = 0;
 	return (n_stack);
 }
-
 
 void				add_operation(t_res **stack, int operation)
 {

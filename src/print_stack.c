@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:38:23 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 18:16:03 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 19:09:04 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,49 +55,23 @@ void				print_stack_index(t_stack *a, t_stack *b)
 	t_stack			*new;
 
 	new = a;
-	printf("A | ");
+	write(1, "A | ", 4);
 	while (new)
 	{
-		printf("%d ", new->index);
+		ft_putnbr_fd(new->index, 1);
 		new = new->next;
 	}
-	printf("\n");
+	write(1, "\n", 1);
 	new = b;
-	printf("B | ");
+	write(1, "B | ", 4);
 	while (new)
 	{
-		printf("%d ", new->index);
+		ft_putnbr_fd(new->index, 1);
 		new = new->next;
 	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
-}
-
-void				print_stack_with_opt(t_stack *a, t_stack *b)
-{
-	t_stack			*new;
-
-	new = a;
-	printf("A | ");
-	while (new)
-	{
-		printf("%d", new->content);
-		printf("(%d, %d) ", new->index, new->is_a);
-		new = new->next;
-	}
-	printf("\n");
-	new = b;
-	printf("B | ");
-	while (new)
-	{
-		printf("%d ", new->content);
-		printf("(%d, %d) ", new->index, new->is_a);
-		new = new->next;
-	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
+	write(1, "\n", 1);
+	write(1, "\n", 1);
+	write(1, "\n", 1);
 }
 
 void				print_stack(t_stack *a, t_stack *b)
@@ -105,21 +79,21 @@ void				print_stack(t_stack *a, t_stack *b)
 	t_stack			*new;
 
 	new = a;
-	printf("A | ");
+	write(1, "A | ", 4);
 	while (new)
 	{
-		printf("%d ", new->content);
+		ft_putnbr_fd(new->content, 1);
 		new = new->next;
 	}
-	printf("\n");
+	write(1, "\n", 1);
 	new = b;
-	printf("B | ");
+	write(1, "B | ", 4);
 	while (new)
 	{
-		printf("%d ", new->content);
+		ft_putnbr_fd(new->content, 1);
 		new = new->next;
 	}
-	printf("\n");
-	printf("\n");
-	printf("\n");
+	write(1, "\n", 1);
+	write(1, "\n", 1);
+	write(1, "\n", 1);
 }

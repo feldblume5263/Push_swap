@@ -6,11 +6,37 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 14:48:42 by junhpark          #+#    #+#             */
-/*   Updated: 2021/04/30 14:49:30 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 19:27:10 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void				rotate_a_to_put(t_stack **a, t_stack **b, t_res **res)
+{
+	int				tag;
+
+	tag = 0;
+	tag = is_smallest_size(a, b, res);
+	if (tag == 0)
+		tag = is_largest_size(a, b, res);
+	while (!tag && !(((*a)->index > (*b)->index) &&\
+			(stack_last(*a)->index < (*b)->index)))
+	{
+		if ((*a)->index < (*b)->index)
+		{
+			ft_rotate(a, b, TAG_A);
+			add_operation(res, RA);
+		}
+		else
+		{
+			ft_rev_rotate(a, b, TAG_A);
+			add_operation(res, RRA);
+		}
+	}
+	ft_push(a, b, TAG_A);
+	add_operation(res, PA);
+}
 
 int					get_index_order(t_stack *new, int index)
 {
