@@ -6,13 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 18:53:14 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 22:14:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 22:18:19 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// ANCHOR 에러메세지 전부 ERROR로 수정
 
 void				refactoring_res2(t_res *cmp, t_res *new)
 {

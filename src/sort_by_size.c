@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 17:55:59 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 22:01:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 22:18:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int					size_check_swap_effect(t_stack **a, t_stack **b, int mark)
 		return (TRUE);
 }
 
-#include <stdio.h>
 void				set_size_mark(t_stack *a, int headmark)
 {
 	t_stack			*new;
