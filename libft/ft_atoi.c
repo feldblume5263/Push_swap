@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:51:47 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 17:32:22 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:43:07 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ double				mk_num(const char *str, int num_len)
 	while (str[i] >= '0' && str[i] <= '9' && str[i])
 	{
 		result += (str[i] - 48) * make_ten(num_len);
-
 		i++;
 		num_len--;
 	}
