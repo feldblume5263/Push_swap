@@ -21,6 +21,7 @@ int						main(int argc, char **argv)
 {
 	int					max;
 
+	srand(time(NULL));
 	if (argc != 2)
 		return (1);
 	max = atoi(argv[1]);

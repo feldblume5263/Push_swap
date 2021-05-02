@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 20:00:31 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 15:30:07 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int					run_operation(char *opt, t_stack **a, t_stack **b);
 */
 
 int					main(int argc, char *argv[]);
-void				sorting(t_stack **a, t_stack **b);
+void				sorting(t_stack **a, t_stack **b, t_stack **dup_a, t_stack **dup_b);
 void				sorting_size(t_stack **a, t_stack **b, t_res **res);
 void				size_a_to_b(t_stack **a, t_stack **b, t_res **res);
 int					size_check_swap_effect(t_stack **a, t_stack **b, int mark);
@@ -88,6 +88,7 @@ void				sorting_index(t_stack **a, t_stack **b, t_res **res);
 void				a_to_b(t_stack **a, t_stack **b, t_res **res);
 int					check_swap_effect(t_stack **a, t_stack **b, int mark);
 void				move_smallest_to_first(t_stack **stack, t_res **res);
+void				move_largest_to_first(t_stack **stack, t_res **res);
 
 /*
 **	sorting_utils.c

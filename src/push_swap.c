@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/01 20:29:53 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:09:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,50 @@ int					prepare_move(t_stack **a, t_stack **b)
 	return (test[1]);
 }
 
-// FIXME 여기서 두개 바꿔가면서 작은 수 찾기
+int					is_largest_size(t_stack **a, t_stack **b, t_res **res)
+{
+	t_stack			*new;
+	int				compare;
+
+	new = *a;
+	compare = (*b)->index;
+	while (new)
+	{
+		if (compare < new->index)
+			return (0);
+		new = new->next;
+	}
+	move_smallest_to_first(a, res);
+	return (1);
+}
+
+
+int					is_smallest_size(t_stack **a, t_stack **b, t_res **res)
+{
+	t_stack			*new;
+	int				compare;
+
+	new = *a;
+	compare = (*b)->index;
+	while (new)
+	{
+		if (compare > new->index)
+			return (0);
+		new = new->next;
+	}
+	move_smallest_to_first(a, res);
+	return (1);
+}
+
 void				rotate_a_to_put(t_stack **a, t_stack **b, t_res **res)
 {
-	print_stack_index(*a, *b);
-	while (!(((*a)->index > (*b)->index) && (stack_last(*a)->index < (*b)->index)))
+	int				tag;
+
+	tag = 0;
+	tag = is_smallest_size(a, b, res);
+	if (tag == 0)
+		tag = is_largest_size(a, b, res);
+	while (!tag && !(((*a)->index > (*b)->index) && (stack_last(*a)->index < (*b)->index)))
 	{
 		if ((*a)->index < (*b)->index)
 		{
@@ -112,7 +151,7 @@ void				size_b_to_a(t_stack **a, t_stack **b, t_res **res)
 	int				operation;
 
 	idx = 0;
-	while (idx < stack_size(*b))
+	while (idx < 20)
 	{
 		operation = prepare_move(a, b);
 		size_run_operation(a, b, operation);
@@ -257,31 +296,78 @@ void				sorting_size(t_stack **a, t_stack **b, t_res **res)
 		size_b_to_a(a, b, res);
 	}
 	move_smallest_to_first(a, res);
-	print_operation(*res);
 }
 
-void				sorting(t_stack **a, t_stack **b)
+int					count_operation_final(t_res *operation)
+{
+	int				count;
+
+	count = 0;
+	while (operation)
+	{
+		if (operation->op > -1)
+			count++;
+		operation = operation->next;
+	}
+	return (count);
+}
+
+void				sorting(t_stack **a, t_stack **b, t_stack **dup_a, t_stack **dup_b)
 {
 	t_res			*res_one;
 	t_res			*res_two;
 
-	// set_markup(a);
-	// res_one = init_operation(-1);
-	// sorting_index(a, b, &res_one);
-	// refactoring_res(res_one);
-	// print_operation(res_one);
+	set_markup(*a);
+	res_one = init_operation(-1);
+	sorting_index(a, b, &res_one);
+	refactoring_res(res_one);
 	res_two = init_operation(-1);
-	sorting_size(a, b, &res_two);
+	sorting_size(dup_a, dup_b, &res_two);
+	refactoring_res(res_two);
+	if (count_operation_final(res_one) <= count_operation_final(res_two))
+		print_operation(res_one);
+	else
+		print_operation(res_two);
+	
+}
+
+void				dup_stack(t_stack *stack, t_stack **ret)
+{
+	int				idx;
+	int				size;
+	t_stack			*new;
+
+	size = stack_size(stack);
+	idx = 0;
+	new = stack;
+	while (idx < size)
+	{
+		stack_add_back(ret, stack_init(new->content));
+		stack_last(*ret)->index = new->index;
+		new = new->next;
+		idx++;
+	}
+}
+
+void				check_input_error()
+{
+	
 }
 
 int					main(int argc, char *argv[])
 {
 	t_stack			*a;
 	t_stack			*b;
+	t_stack			*dup_a;
+	t_stack			*dup_b;
 
 	if (argc < 2)
 		return (0);
 	set_num(argc - 1, argv, &a);
+	if (argc < 3)
+		return (0);
 	set_index(a);
-	sorting(&a, &b);
+	dup_stack(a, &dup_a);
+	dup_stack(b, &dup_b);
+	sorting(&a, &b, &dup_a, &dup_b);
 }

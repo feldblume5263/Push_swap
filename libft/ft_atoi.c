@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:51:47 by junhpark          #+#    #+#             */
-/*   Updated: 2020/04/09 18:42:13 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 17:32:22 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int					find_error(const char *str)
 		return (1);
 }
 
-int					make_ten(int size)
+double				make_ten(int size)
 {
-	int				ten;
+	double			ten;
 
 	ten = 1;
 	if (size == 0)
@@ -72,10 +72,10 @@ int					make_ten(int size)
 	return (ten);
 }
 
-long long			mk_num(const char *str, int num_len)
+double				mk_num(const char *str, int num_len)
 {
 	int				i;
-	long long		result;
+	double			result;
 
 	result = 0;
 	i = 0;
@@ -84,6 +84,7 @@ long long			mk_num(const char *str, int num_len)
 	while (str[i] >= '0' && str[i] <= '9' && str[i])
 	{
 		result += (str[i] - 48) * make_ten(num_len);
+
 		i++;
 		num_len--;
 	}
@@ -92,7 +93,7 @@ long long			mk_num(const char *str, int num_len)
 
 int					ft_atoi(const char *str)
 {
-	long long		result;
+	double			result;
 	int				num_len;
 	int				i;
 
@@ -109,6 +110,11 @@ int					ft_atoi(const char *str)
 		if (str[i] == '-')
 			result *= -1;
 		i++;
+	}
+	if (result > 2147483647.0 || result < -2147483648.0)
+	{
+		write(1, "BOUNDS ERROR\n", 13);
+		exit(1);
 	}
 	return ((int)result);
 }
