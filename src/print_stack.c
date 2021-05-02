@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:38:23 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 19:09:04 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 21:05:30 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void				print_stack_index(t_stack *a, t_stack *b)
 	while (new)
 	{
 		ft_putnbr_fd(new->index, 1);
+		write(1, " ", 1);
 		new = new->next;
 	}
 	write(1, "\n", 1);
@@ -67,6 +68,7 @@ void				print_stack_index(t_stack *a, t_stack *b)
 	while (new)
 	{
 		ft_putnbr_fd(new->index, 1);
+		write(1, " ", 1);
 		new = new->next;
 	}
 	write(1, "\n", 1);
@@ -83,6 +85,7 @@ void				print_stack(t_stack *a, t_stack *b)
 	while (new)
 	{
 		ft_putnbr_fd(new->content, 1);
+		write(1, " ", 1);
 		new = new->next;
 	}
 	write(1, "\n", 1);
@@ -91,6 +94,7 @@ void				print_stack(t_stack *a, t_stack *b)
 	while (new)
 	{
 		ft_putnbr_fd(new->content, 1);
+		write(1, " ", 1);
 		new = new->next;
 	}
 	write(1, "\n", 1);

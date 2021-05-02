@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 19:48:39 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 18:31:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 21:44:57 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void				exit_with_error(int errno)
 	}
 	else if (errno == 2)
 	{
-		write(1, "MEM_ERROR\n", 10);
+		write(1, "ERROR\n", 6);
 		exit(2);
 	}
 	else if (errno == 3)
 	{
-		write(1, "DUP_ERROR\n", 10);
-		exit(2);
+		write(1, "ERROR\n", 6);
+		exit(3);
 	}
 }
 

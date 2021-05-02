@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 19:50:33 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 18:40:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 21:34:36 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int					check_order(t_stack *stack)
 	{
 		if (temp > new->content)
 			return (0);
+		temp = new->content;
 		new = new->next;
 	}
 	return (1);

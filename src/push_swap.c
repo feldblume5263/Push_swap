@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:50:00 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 22:14:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void
 		print_operation(res_one);
 	else
 		print_operation(res_two);
+	free_res(&res_one);
+	free_res(&res_two);
 }
 
 void
@@ -73,4 +75,5 @@ int
 	free_stack(&b);
 	free_stack(&dup_a);
 	free_stack(&dup_b);
+	system("leaks push_swap");
 }

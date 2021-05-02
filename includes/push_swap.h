@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:49:26 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 22:14:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct		s_input
 */
 void				get_operation(t_stack **a, t_stack **b);
 int					run_operation(char *opt, t_stack **a, t_stack **b);
-void				run_operation2(char *opt, t_stack **a, t_stack **b);
+int					run_operation2(char *opt, t_stack **a, t_stack **b);
 
 /*
 **	push_swap.c
@@ -178,6 +178,7 @@ void				stack_delete(t_stack **stack);
 void				refactoring_res(t_res *res);
 void				refactoring_res2(t_res *cmp, t_res *new);
 void				free_stack(t_stack **stack);
+void				free_res(t_res **stack);
 
 /*
 **	size_utils.c

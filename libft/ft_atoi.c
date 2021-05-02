@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 17:51:47 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 17:43:07 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 21:44:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int					ft_atoi(const char *str)
 	}
 	if (result > 2147483647.0 || result < -2147483648.0)
 	{
-		write(1, "BOUNDS ERROR\n", 13);
+		write(1, "ERROR\n", 6);
 		exit(1);
 	}
 	return ((int)result);
