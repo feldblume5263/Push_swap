@@ -6,11 +6,27 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 20:12:08 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:13:06 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:15:39 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int					run_operation2(char *opt, t_stack **a, t_stack **b)
+{
+	if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ra", 2) == 0)
+		ft_rotate(a, b, TAG_A);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rb", 2) == 0)
+		ft_rotate(a, b, TAG_B);
+	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rr", 2) == 0)
+		ft_rotate(a, b, TAG_ALL);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rra", 3) == 0)
+		ft_rev_rotate(a, b, TAG_A);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrb", 3) == 0)
+		ft_rev_rotate(a, b, TAG_B);
+	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrr", 3) == 0)
+		ft_rev_rotate(a, b, TAG_ALL);
+}
 
 int					run_operation(char *opt, t_stack **a, t_stack **b)
 {
@@ -24,18 +40,8 @@ int					run_operation(char *opt, t_stack **a, t_stack **b)
 		ft_push(a, b, TAG_A);
 	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "pb", 2) == 0)
 		ft_push(a, b, TAG_B);
-	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ra", 2) == 0)
-		ft_rotate(a, b, TAG_A);
-	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rb", 2) == 0)
-		ft_rotate(a, b, TAG_B);
-	else if (ft_strlen(opt) == 2 && ft_strncmp(opt, "rr", 2) == 0)
-		ft_rotate(a, b, TAG_ALL);
-	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rra", 3) == 0)
-		ft_rev_rotate(a, b, TAG_A);
-	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrb", 3) == 0)
-		ft_rev_rotate(a, b, TAG_B);
-	else if (ft_strlen(opt) == 3 && ft_strncmp(opt, "rrr", 3) == 0)
-		ft_rev_rotate(a, b, TAG_ALL);
+	else if (1)
+		run_operation2(opt, a, b);
 	else if (*opt == '\0')
 		return (0);
 	else
