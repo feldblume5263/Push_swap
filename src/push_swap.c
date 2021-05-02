@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 18:39:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:28:42 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int
 	t_stack			*dup_a;
 	t_stack			*dup_b;
 
+	b = NULL;
 	if (argc < 2)
 		return (0);
 	set_num(argc - 1, argv, &a);

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 15:30:07 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:26:39 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // 삭제 필수...!
 # include <fcntl.h>
 
 # define TAG_A		1
@@ -59,27 +58,16 @@ typedef struct		s_input
 /*
 **	checker.c
 */
-int					main(int argc, char *argv[]);
 void				get_operation(t_stack **a, t_stack **b);
 int					run_operation(char *opt, t_stack **a, t_stack **b);
+void				run_operation2(char *opt, t_stack **a, t_stack **b);
 
 /*
 **	push_swap.c
 */
-
-int					main(int argc, char *argv[]);
-void				sorting(t_stack **a, t_stack **b, t_stack **dup_a, t_stack **dup_b);
-void				sorting_size(t_stack **a, t_stack **b, t_res **res);
-void				size_a_to_b(t_stack **a, t_stack **b, t_res **res);
-int					size_check_swap_effect(t_stack **a, t_stack **b, int mark);
-int					set_headmark(t_stack *a);
-void				set_size_mark(t_stack *a, int headmark);
-void				size_b_to_a(t_stack **a, t_stack **b, t_res **res);
-void				rotate_a_to_put(t_stack **a, t_stack **b, t_res **res);
-int					prepare_move(t_stack **a, t_stack **b);
-void				calculate_test(t_stack **a, t_stack **b, int *test, int operation);
-void				size_run_operation(t_stack **a, t_stack **b, int opt);
-int					get_gap(int a, int b);
+void				dup_stack(t_stack *stack, t_stack **ret);
+void				sorting(t_stack **a, t_stack **b,\
+						t_stack **dup_a, t_stack **dup_b);
 
 /*
 **	sort_by_index.c
@@ -91,8 +79,26 @@ void				move_smallest_to_first(t_stack **stack, t_res **res);
 void				move_largest_to_first(t_stack **stack, t_res **res);
 
 /*
+**	sort_by_size.c
+*/
+void				sorting_size(t_stack **a, t_stack **b, t_res **res);
+void				size_a_to_b(t_stack **a, t_stack **b, t_res **res);
+int					size_check_swap_effect(t_stack **a, t_stack **b, int mark);
+void				set_size_mark(t_stack *a, int headmark);
+void				size_b_to_a(t_stack **a, t_stack **b, t_res **res);
+
+/*
+**	prepare.c
+*/
+int					prepare_move(t_stack **a, t_stack **b);
+void				calculate_test(t_stack **a, t_stack **b,\
+						int *test, int operation);
+void				size_run_operation(t_stack **a, t_stack **b, int opt);
+
+/*
 **	sorting_utils.c
 */
+void				rotate_a_to_put(t_stack **a, t_stack **b, t_res **res);
 int					get_largest(t_stack *stack);
 int					get_smallest(t_stack *stack);
 int					get_index_order(t_stack *new, int index);
@@ -100,10 +106,10 @@ int					get_index_order(t_stack *new, int index);
 /*
 **	result.c
 */
+int					count_operation_final(t_res *operation);
 void				add_operation(t_res **stack, int operation);
 t_res				*init_operation(int operation);
 t_res				*operation_last(t_res *stack);
-void				refactoring_res(t_res *res);
 
 /*
 **	set_stack.c
@@ -119,7 +125,9 @@ void				set_index(t_stack *stack);
 void				set_markup(t_stack *stack);
 void				set_tag(t_stack *new, int *tag);
 int					count_markup(t_stack *stack);
-
+int					set_headmark(t_stack *a);
+void				set_headmark2(t_stack *a, t_stack *start,\
+						t_stack *new, int *idx);
 
 /*
 **	operation.c
@@ -151,6 +159,7 @@ void				stack_delete(t_stack **stack);
 /*
 **	error.c
 */
+void				check_dup_error(t_stack *a);
 void				exit_with_error(int errno);
 int					is_string_digit(char *str);
 
@@ -158,17 +167,28 @@ int					is_string_digit(char *str);
 **	other_utils.c
 */
 void				swap_arr(int arr[], int a_idx, int b_idx);
+int					is_largest_size(t_stack **a, t_stack **b, t_res **res);
+int					is_smallest_size(t_stack **a, t_stack **b, t_res **res);
+int					get_gap(int a, int b);
 
 /*
-**	quick_sort.c
+**	free.c
 */
+void				stack_delete(t_stack **stack);
+void				refactoring_res(t_res *res);
+void				refactoring_res2(t_res *cmp, t_res *new);
+
+/*
+**	size_utils.c
+*/
+t_stack				*start_with_headmark(int headmark, t_stack *a);
+void				init_stack_isa(t_stack *a);
 void				quicksort(int arr[], int start, int end);
 
 /*
 **	print_stack.c
 */
 void				print_stack(t_stack *a, t_stack *b);
-void				print_stack_with_opt(t_stack *a, t_stack *b);
 void				print_stack_index(t_stack *a, t_stack *b);
 void				print_operation(t_res *stack);
 void				print_by_num(t_res *new);

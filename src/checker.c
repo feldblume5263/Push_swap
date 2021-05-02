@@ -6,13 +6,13 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 20:12:08 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:15:39 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:27:57 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int					run_operation2(char *opt, t_stack **a, t_stack **b)
+void					run_operation2(char *opt, t_stack **a, t_stack **b)
 {
 	if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ra", 2) == 0)
 		ft_rotate(a, b, TAG_A);
@@ -79,4 +79,6 @@ int					main(int argc, char *argv[])
 	if (argc < 2)
 		return (0);
 	set_num(argc - 1, argv, &a);
+	check_dup_error(a);
+	get_operation(&a, &b);
 }
