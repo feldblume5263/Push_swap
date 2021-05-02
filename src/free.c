@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 18:53:14 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:11:08 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:55:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,20 @@ void				stack_delete(t_stack **stack)
 	{
 		free(temp);
 		temp = NULL;
+	}
+}
+
+void				free_stack(t_stack **stack)
+{
+	t_stack			*temp;
+
+	while (*stack)
+	{
+		temp = NULL;
+		if ((*stack)->next)
+			temp = (*stack)->next;
+		free(*stack);
+		*stack = NULL;
+		*stack = temp;
 	}
 }

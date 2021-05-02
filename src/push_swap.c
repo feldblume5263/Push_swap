@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:28:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:50:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,8 @@ int
 	dup_stack(a, &dup_a);
 	dup_stack(b, &dup_b);
 	sorting(&a, &b, &dup_a, &dup_b);
+	free_stack(&a);
+	free_stack(&b);
+	free_stack(&dup_a);
+	free_stack(&dup_b);
 }

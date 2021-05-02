@@ -6,13 +6,13 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 20:12:08 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:27:57 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:50:08 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void					run_operation2(char *opt, t_stack **a, t_stack **b)
+void				run_operation2(char *opt, t_stack **a, t_stack **b)
 {
 	if (ft_strlen(opt) == 2 && ft_strncmp(opt, "ra", 2) == 0)
 		ft_rotate(a, b, TAG_A);
@@ -70,7 +70,6 @@ void				get_operation(t_stack **a, t_stack **b)
 		write(1, "KO\n", 3);
 }
 
-// TODO 정수형 범위 초과, 중복 검사 해야함.
 int					main(int argc, char *argv[])
 {
 	t_stack			*a;
@@ -81,4 +80,6 @@ int					main(int argc, char *argv[])
 	set_num(argc - 1, argv, &a);
 	check_dup_error(a);
 	get_operation(&a, &b);
+	free_stack(&a);
+	free_stack(&b);
 }

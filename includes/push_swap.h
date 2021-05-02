@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 20:26:39 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 20:49:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ int					get_gap(int a, int b);
 void				stack_delete(t_stack **stack);
 void				refactoring_res(t_res *res);
 void				refactoring_res2(t_res *cmp, t_res *new);
+void				free_stack(t_stack **stack);
 
 /*
 **	size_utils.c
