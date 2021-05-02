@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 20:12:08 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 21:09:58 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/02 22:20:01 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void				get_operation(t_stack **a, t_stack **b)
 			exit_with_error(2);
 		if (!(run_operation(line, a, b)))
 			break ;
-		print_stack(*a, *b);
 		free(line);
 		line = NULL;
 	}
