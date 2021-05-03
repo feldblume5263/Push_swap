@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:53:09 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 22:19:07 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/03 11:28:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void
 	t_res			*res_two;
 
 	set_markup(*a);
-	res_one = init_operation(-1);
+	res_one = NULL;
 	sorting_index(a, b, &res_one);
 	refactoring_res(res_one);
-	res_two = init_operation(-1);
+	res_two = NULL;
 	sorting_size(dup_a, dup_b, &res_two);
 	refactoring_res(res_two);
 	if (count_operation_final(res_one) <= count_operation_final(res_two))

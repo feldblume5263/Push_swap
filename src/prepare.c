@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 18:28:49 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 18:37:20 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:13:23 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,15 @@ int
 
 	test[0] = get_gap((*a)->index, (*b)->index);
 	test[1] = -1;
-	calculate_test(a, b, test, SB);
-	ft_swap(a, b, TAG_B);
-	calculate_test(a, b, test, RA);
-	ft_rev_rotate(a, b, TAG_A);
-	calculate_test(a, b, test, RB);
-	ft_rev_rotate(a, b, TAG_B);
 	calculate_test(a, b, test, RR);
 	ft_rev_rotate(a, b, TAG_ALL);
-	calculate_test(a, b, test, RRA);
-	ft_rotate(a, b, TAG_A);
-	calculate_test(a, b, test, RRB);
-	ft_rotate(a, b, TAG_B);
 	calculate_test(a, b, test, RRR);
 	ft_rotate(a, b, TAG_ALL);
+	calculate_test(a, b, test, RB);
+	ft_rev_rotate(a, b, TAG_B);
+	calculate_test(a, b, test, RRB);
+	ft_rotate(a, b, TAG_B);
+	calculate_test(a, b, test, SB);
+	ft_swap(a, b, TAG_B);
 	return (test[1]);
 }

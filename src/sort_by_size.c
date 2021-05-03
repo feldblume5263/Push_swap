@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 17:55:59 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 22:18:06 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/03 11:49:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				size_b_to_a(t_stack **a, t_stack **b, t_res **res)
 	int				operation;
 
 	idx = 0;
-	while (idx < 20)
+	while (idx < 10)
 	{
 		operation = prepare_move(a, b);
 		size_run_operation(a, b, operation);

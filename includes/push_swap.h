@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 23:54:43 by junhpark          #+#    #+#             */
-/*   Updated: 2021/05/02 22:14:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:14:29 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 # define TAG_A		1
 # define TAG_B		2
